@@ -1,24 +1,35 @@
 'use strict';
 
-const flights = ['Russia', 'USA', 'London', 'USA', 'London', 1];
-console.log(flights);
+const wetherMap = new Map();
+wetherMap.set('London', '10');
+wetherMap.set('Moscow', '7');
+wetherMap
+	.set('Barnaul', '10')
+	.set('Minsk', '7');
 
-const setFlights = new Set(flights);
-console.log(setFlights);
-console.log(setFlights.size);
-console.log(setFlights.has('Russia'));
-console.log(setFlights.has('Russias'));
-console.log(setFlights.add('Canada'));
-console.log(setFlights.delete('Canada'));
-console.log(setFlights);
-// console.log(setFlights.clear());
+console.log(wetherMap);
+console.log(wetherMap.get('London'));
+console.log(wetherMap.get('No'));
+
+console.log(wetherMap.has('London'));
+
+wetherMap.delete('London');
+
+wetherMap.clear();
 
 
-for (const flight of setFlights) {
-	console.log(flight);
-}
+wetherMap
+	.set(1, 5)
+	.set(true, 'Yes')
+	.set(true, 'Yes!!!')
+	.set(false, 'No')
+	.set([1, 2, 3], 'array')
+	.set({a: 1}, {b: 1});
 
-console.log([...setFlights]);
+console.log(wetherMap.size);
 
-const setObj = new Set([{a: 1}, {b: 2}, {b: 3}]);
-console.log(setObj);
+console.log(wetherMap);
+
+console.log(wetherMap.get([1, 2, 3]));
+console.log(wetherMap.get({a: 1}));
+
