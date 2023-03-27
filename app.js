@@ -1,24 +1,18 @@
 'use strict';
 
-console.log(10 === 10.0);
+console.log(Math.sqrt(36));
+console.log(Math.cbrt(27));
 
-console.log(0.1 + 0.2 === 0.3);
-console.log(0.1 + 0.2);
+console.log(16 ** (1 / 4));
 
-console.log(Number('10'));
-console.log(+'20');
+console.log(Math.sign(-12));
+console.log(Math.sign(34));
 
-console.log(Number.parseInt('10', 2));
-console.log(Number.parseInt('11 sec', 10));
+console.log(Math.abs(-100));
 
-console.log(Number.parseFloat('10.2', 2));
-console.log(Number.parseFloat('11.12 sec', 10));
+console.log(Math.exp(2));
 
-console.log(Number.isNaN(Number('10sdfsd')));
-console.log(Number.isNaN(10 / 0));
-console.log(10 / 0);
-console.log(Number.isFinite(10 / 0));
-console.log(Number.isFinite(10 / 1));
+console.log(Math.max(1, -2, 10, 0, 32, 19));
+console.log(Math.min(1, -2, 10, 0, 32, 19));
 
-console.log(Number.isInteger(10));
-console.log(Number.isInteger(10.2));
+console.log(Math.random());
