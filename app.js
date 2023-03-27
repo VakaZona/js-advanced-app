@@ -1,11 +1,31 @@
 'use strict';
 
-const max = 2 ** 53 - 1;
-console.log(Number.MAX_SAFE_INTEGER);
-console.log(Number.MIN_SAFE_INTEGER);
-console.log(max);
-console.log(max + 1);//no job
+const options = {
+	style: 'currency',
+	currency: 'RUB',
+	useGrouping: false
+}
 
-console.log(1241241241241513541412412412515124215125412515n);
-console.log(BigInt(1241241241241513541412412412515124215125412515));
-console.log(BigInt('1241241241241513541412412412515124215125412515'));
+const options2 = {
+	style: 'currency',
+	currency: 'USD'
+}
+
+const options3 = {
+	style: 'decimal',
+}
+
+const options4 = {
+	style: 'percent',
+}
+
+const options5 = {
+	style: 'unit',
+	unit: 'celsius'
+}
+
+console.log(new Intl.NumberFormat('ru-RU', options).format(23000));
+console.log(new Intl.NumberFormat('en-US', options2).format(23000));
+console.log(new Intl.NumberFormat('ru-RU', options3).format(23000));
+console.log(new Intl.NumberFormat('ru-RU', options4).format(0.1));
+console.log(new Intl.NumberFormat('ru-RU', options5).format(25));
