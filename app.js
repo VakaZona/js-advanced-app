@@ -1,10 +1,11 @@
 'use strict';
 
-const bigNum = 350_500_012_350;
-const bigNum2 = 350500012350;
-console.log(bigNum === bigNum2);
+const max = 2 ** 53 - 1;
+console.log(Number.MAX_SAFE_INTEGER);
+console.log(Number.MIN_SAFE_INTEGER);
+console.log(max);
+console.log(max + 1);//no job
 
-const payment = 20_10;
-
-console.log(Number('350_500_012_350'));
-console.log(Number('350500012350'));
+console.log(1241241241241513541412412412515124215125412515n);
+console.log(BigInt(1241241241241513541412412412515124215125412515));
+console.log(BigInt('1241241241241513541412412412515124215125412515'));
