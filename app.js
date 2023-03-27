@@ -1,18 +1,17 @@
 'use strict';
 
-console.log(Math.sqrt(36));
-console.log(Math.cbrt(27));
+console.log(Math.round(1.4));
+console.log(Math.round(1.6));
 
-console.log(16 ** (1 / 4));
+console.log(Math.ceil(1.1));
 
-console.log(Math.sign(-12));
-console.log(Math.sign(34));
+console.log(Math.floor(1.7));
 
-console.log(Math.abs(-100));
 
-console.log(Math.exp(2));
+console.log(Math.trunc(2.5));
+console.log(Math.trunc(2.4));
+console.log(Math.trunc(2.9));
 
-console.log(Math.max(1, -2, 10, 0, 32, 19));
-console.log(Math.min(1, -2, 10, 0, 32, 19));
-
-console.log(Math.random());
+console.log((1.4999999).toFixed(1));
+console.log((1.4999999).toFixed(4));
+console.log(Number((1.4999999).toFixed(4)));
