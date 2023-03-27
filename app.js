@@ -1,23 +1,17 @@
 'use strict';
 
-function convert(sum, initialCurrency, convertCurrency) {
-	const allCurrencies = [
-		{ name: 'USD', mult: 1 },
-		{ name: 'RUB', mult: 1 / 60 },
-		{ name: 'EUR', mult: 1.1 },
-	];
-	const initial = allCurrencies.find(c => c.name === initialCurrency);
-	if (!initial) {
-		return null;
-	}
+const now = new Date();
+console.log(now);
 
-	const convert = allCurrencies.find(c => c.name === convertCurrency);
-	if (!convert) {
-		return null;
-	}
-	return new Intl
-		.NumberFormat('ru_RU', { style: 'currency', currency: convert.name })
-		.format(sum * initial.mult / convert.mult);
-}
+console.log(new Date('01-01-2022'));
+console.log(new Date('01/01/2022'));
 
-console.log(convert(10000, 'RUB', 'USD'));
+console.log(new Date(2024, 11, 31));
+console.log(new Date(2024, 11, 51));
+
+console.log(now.getDate());
+console.log(now.getDay());
+console.log(now.getMonth());
+console.log(now.getFullYear());
+console.log(now.getMinutes());
+console.log(now.getTime());
