@@ -1,25 +1,20 @@
 'use strict';
 
-const user1 = {
-	name: 'Vasia',
-	birthday: '3/27/2023'
-}
-const user2 = {
-	name: 'Vasia',
-	birthday: '12/4/2023'
-}
+const date = new Date();
 
-function isBirthday(user) {
-	const birthdayDate = new Date(user.birthday);
-	const now = new Date();
-	if (birthdayDate.getMonth() !== now.getMonth()) {
-		return false;
-	}
-	if (birthdayDate.getDate() !== now.getDate()) {
-		return false;
-	}
-	return true;
-}
+console.log(date);
 
-console.log(isBirthday(user1));
-console.log(isBirthday(user2));
+console.log(new Intl.DateTimeFormat('ru-RU').format(date));
+
+const options1 = {
+	hour: 'numeric',
+	minute: 'numeric'
+}
+console.log(new Intl.DateTimeFormat('ru-RU', options1).format(date));
+
+const options2 = {
+	hour: 'numeric',
+	minute: 'numeric',
+	month: 'long'
+}
+console.log(new Intl.DateTimeFormat('en-US', options2).format(date));
