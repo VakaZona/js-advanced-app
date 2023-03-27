@@ -1,12 +1,11 @@
 'use strict';
 
-const date1 = new Date(2024, 10, 15);
-const date2 = new Date(2024, 11, 15);
-console.log(Number(date1));
-console.log(date2 - date1);
+const first = new Date(2024, 10, 4);
+const second = new Date(2024, 10, 4);
 
-function getDaysBetweenDates(dateFirst, dateLast) {
-	return (dateLast - dateFirst) / (1000 * 60 * 60 * 24);
-}
+console.log(first > second);
+console.log(first.getTime() > second.getTime());
+console.log(first == second);
+console.log(first === second);
 
-console.log(getDaysBetweenDates(date1, date2))
+console.log(first.getTime() === second.getTime());
