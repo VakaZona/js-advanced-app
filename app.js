@@ -1,20 +1,12 @@
 'use strict';
 
-const date = new Date();
+console.log(1);
 
-console.log(date);
+const boomTimer = setTimeout((message1, message2) => {
+	console.log(message1);
+	console.log(message2);
+}, 1000, 'Bash', 'boom')
 
-console.log(new Intl.DateTimeFormat('ru-RU').format(date));
+clearTimeout(boomTimer);// close timer
 
-const options1 = {
-	hour: 'numeric',
-	minute: 'numeric'
-}
-console.log(new Intl.DateTimeFormat('ru-RU', options1).format(date));
-
-const options2 = {
-	hour: 'numeric',
-	minute: 'numeric',
-	month: 'long'
-}
-console.log(new Intl.DateTimeFormat('en-US', options2).format(date));
+console.log(2);
