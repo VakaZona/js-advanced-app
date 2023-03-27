@@ -1,7 +1,9 @@
 'use strict';
 
-function random(min, max) {
-	return Math.floor(Math.random() * (max - min +1) + min);
-}
+console.log(15 / 2);
+console.log(15 % 2);
+console.log(14 % 2);
 
-console.log(random(1, 5));
+
+const isEven = n => n % 2 === 0;
+console.log(isEven(2));
