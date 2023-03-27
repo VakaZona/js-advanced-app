@@ -1,20 +1,30 @@
 'use strict';
 
-let weatherMap = new Map([
-	['London', 10],
-	['Moscow', 7],
-	['Paris', 14]
-])
-//my sposob
-let weatherMap2 = new Map();
+let a = { a: 1 };
+let b = { b: 1 };
 
-for (let [key, value] of weatherMap) {
-	weatherMap2.set(value, key);
+const map = new WeakMap();
+map.set(a, 'test A');
+map.set(b, 'test B');
+console.log(map);
+console.log(map.get(a));
+console.log(map.has(a));
+
+a = null;
+setTimeout(() => {
+	console.log(map);
+}, 1000)
+
+let cache = new WeakMap();
+
+function getValue(obj) {
+	if (!cache.has(obj)) {
+		const result = 1;
+		cache.set(obj, result)
+	}
+	return cache.get(obj);
 }
 
-console.log(weatherMap2);
+const res = getValue(b);
+console.log(res);
 
-//sposob in lesson
-
-weatherMap = new Map([...weatherMap].map(el => el.reverse()));
-console.log(weatherMap);
