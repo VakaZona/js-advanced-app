@@ -1,9 +1,11 @@
 'use strict';
 
-const interval = setInterval(() => {
-	console.log(new Date())
-}, 1000);
+const User = function (email, password) {
+	this.email = email;
+	this.password = password + '***';
+}
 
-setTimeout(() => {
-	clearInterval(interval)
-}, 5000)
+const user1 = new User('a@a.com', '123');
+
+console.log(user1);
+console.log(user1 instanceof User)
