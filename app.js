@@ -1,16 +1,16 @@
 'use strict';
 
-class Car {
-	#vin = 6;
-
-	#changeVin() {
-		console.log('Change VIN');
+const User = {
+	init(email, password) {
+		this.email = email;
+		this.password = password;
+	},
+	log() {
+		console.log('Welcome');
 	}
+};
 
-	test() {
-		this.#changeVin();
-	}
-}
-
-const car = new Car();
-car.test();
+const user = Object.create(User);
+user.log();
+user.init('a@a.com', '123');
+console.log(user);
