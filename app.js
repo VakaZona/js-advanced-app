@@ -6,22 +6,27 @@ class Book {
 		this.author = author;
 	}
 
-	buy() {
-		console.log('buy');
+	info() {
+		console.log(this.title);
+		console.log(this.author);
 	}
 }
 
-class AudioBook extends Book {
-	constructor(title, author, lenMin) {
+class EBook extends Book {
+	constructor(title, author, pages) {
 		super(title, author);
-		this.lenMin = lenMin;
+		this.pages = pages;
 	}
 
-	log() {
-		console.log(`${this.title} - ${this.lenMin}`)
+	info() {
+		console.log(this.title);
+		console.log(this.author);
+		console.log(this.pages);
 	}
 }
 
-const book = new AudioBook('Lord of The Rings', 'Tolkien', 60 * 20);
-book.buy();
-book.log();
+const book = new Book('Lord of the Rings', 'Tolkien');
+book.info();
+
+const book2 = new EBook('Lord of the Rings', 'Tolkien', 150);
+book2.info();
