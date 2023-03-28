@@ -1,16 +1,29 @@
 'use strict';
 
-const User = {
-	init(email, password) {
-		this.email = email;
-		this.password = password;
-	},
-	log() {
-		console.log('Welcome');
-	}
-};
+class Film {
+	#name;
+	#author;
+	rating;
+	#length;
 
-const user = Object.create(User);
-user.log();
-user.init('a@a.com', '123');
-console.log(user);
+	constructor(name, author, length) {
+		this.#name = name;
+		this.#author = author;
+		this.#length = length;
+	}
+
+	get name() {
+		return this.#name;
+	}
+
+	get author() {
+		return this.#author;
+	}
+
+	get length() {
+		return this.#length;
+	}
+}
+
+const film = new Film('Avatar', 'Cameron', 240);
+console.log(film);
