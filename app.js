@@ -1,16 +1,16 @@
 'use strict';
 
-class Test {
-	static a = 1;
-	static hello() {
-		console.log('hello');
+class Car {
+	#vin = 6;
+
+	#changeVin() {
+		console.log('Change VIN');
 	}
 
-	static {
-		let b = 5;
-		this.a = 5;
+	test() {
+		this.#changeVin();
 	}
 }
 
-Test.hello();
-console.log(Test.a)
+const car = new Car();
+car.test();
