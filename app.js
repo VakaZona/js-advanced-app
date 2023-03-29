@@ -1,17 +1,19 @@
 'use strict';
 
-class Weapon {
-	cost;
+function req(id) {
+	const request = new XMLHttpRequest();
+	request.open('GET', 'https://dummyjson.com/products/' + id);
+	request.send();
 
-	deelDamage() {
-
-	}
+	request.addEventListener('load', function () {
+		const data = JSON.parse(this.responseText);
+		console.log(data);
+	});
 }
+req(1);
+req(2);
+req(3);
 
-class Rifle extends Weapon {
-	shoot() { };
-}
 
-class Sword extends Weapon {
-	strike() { };
-}
+console.log('end');
+
