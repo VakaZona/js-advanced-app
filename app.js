@@ -1,16 +1,15 @@
 'use strict';
 
-fetch('https://dummyjson.com/products')
-	.then((response) => response.json())
-	.then(({ products }) => {
-		console.log(products);
-		return fetch('https://dummyjson.com/products/' + products[0].id);
-	})
-	.then(response => response.json())
-	.then(data => {
-		console.log(data);
-	})
-	.catch(error => console.log(error))
-	.finally(() => {
-		console.log('Finnaly');
-	})
+console.log(1);
+
+setTimeout(() => {
+	console.log(2);
+}, 0);
+
+Promise.resolve(3).then((res) => console.log(res));
+
+console.log(4);
+
+for (let i = 0; i < 10000; i++) {
+
+}
