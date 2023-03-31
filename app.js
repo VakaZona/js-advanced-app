@@ -1,13 +1,18 @@
 'use strict';
 
-Promise.resolve('Instant').then(data => console.log(data));
+async function getProducts() {
+	// fetch('https://dummyjson.com/products')
+	// 	.then(response => response.json())
+	// .then(data => console.log(data))
+	const productsResponse = await fetch('https://dummyjson.com/products');
+	const {products} = await productsResponse.json();
+	console.log(products);
 
-const prom = new Promise((resolve) => {
-	console.log('Constructor')
-	setTimeout(() => {
-		resolve('Timer');
-	}, 1000)
-}) 
-prom.then(data => console.log(data))
+	const productResponse = await fetch('https://dummyjson.com/products/' + products[0].id)
+	const product = await productResponse.json();
+	console.log(product);
+}
 
+getProducts();
+console.log('end');
 
