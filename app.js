@@ -1,36 +1,18 @@
 'use strict';
 
-async function getProducts() {
-	// fetch('https://dummyjson.com/products')
-	// 	.then(response => response.json())
-	// .then(data => console.log(data))
-
-	try {
-		const productsResponse = await fetch('https://dummyjson.com/products');
-		if (!productsResponse.ok) {
-			throw new Error(productsResponse.status);
-		}
-		const { products } = await productsResponse.json();
-		console.log(products);
-
-		const productResponse = await fetch('https://dummyjson.com/products/' + products[0].id)
-		const product = await productResponse.json();
-		console.log(product);
-	} catch (e) {
-		console.error(e);
-	} finally {
-		console.log('Finnaly')
+class ProductRepository {
+	async getProduts() {
+		const response = await fetch('https://dummyjson.com/products');
+		console.log(await response.json());
 	}
-
 }
 
-try {
-	const a = 5;
-	a = 4;
-} catch (e) {
-	console.error(e);
+const repo = new ProductRepository;
+repo.getProduts();
+
+const asyncArrow = async () => {
+	const response = await fetch('https://dummyjson.com/products');
+	console.log(await response.json());
 }
 
-getProducts();
-console.log('end');
-
+asyncArrow();
