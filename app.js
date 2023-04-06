@@ -1,16 +1,24 @@
 'use strict';
 
-async function main() {
-	const res = await fetch('https://dummyjson.com/auth/login', {
-		method: 'POST',
-		headers: { 'Content-Type': 'application/json' },
-		body: JSON.stringify({
-			username: 'kminchelle',
-			password: '0lelplR',
-		})
-	});
-	const data = await res.json();
-	console.log(data);
-}
+console.log(document.head);
 
-main();
+
+const el = document.querySelector('.wrapper');
+const el2 = document.querySelectorAll('meta');
+console.log(el);
+console.log(el2);
+const el3 = document.getElementsByClassName('wrapper');
+console.log(el3);
+
+const button = document.createElement('button');
+button.innerHTML = 'Test';
+
+const button2 = document.createElement('button');
+button.innerHTML = 'Test2'
+
+el.append(button)
+el.prepend(button2)
+
+function generate() {
+	el.remove();
+}
