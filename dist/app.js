@@ -1033,7 +1033,6 @@
 		}
 
 		render() {
-			this.el.innerHTML = '';
 			this.el.classList.add('header');
 			this.el.innerHTML = `
 			<div>
@@ -1052,6 +1051,30 @@
 					</div>
 				</a>
 			</div>
+		`;
+			return this.el;
+		}
+	}
+
+	class Search extends DivComponent {
+		constructor(state) {
+			super();
+			this.state = state;
+		}
+
+		render() {
+			this.el.classList.add('search');
+			this.el.innerHTML = `
+			<div class="search__wrapper">
+				<input
+					type="text"
+					placeholder="Search book or author"
+					class="search__input"
+					value="${this.state.searchQuery ? this.state.searchQuery : ''}"
+				/>
+				<img src="/static/search.svg" alt="Search icon"/>
+			</div>
+			<button aria-label="Search"><img src="/static/search-white.svg" alt="search icon" /></button>
 		`;
 			return this.el;
 		}
@@ -1081,6 +1104,7 @@
 
 		render() {
 			const main = document.createElement('div');
+			main.appendChild(new Search(this.state).render());
 			this.app.innerHTML = '';
 			this.app.append(main);
 			this.renderHeader();
@@ -1088,7 +1112,7 @@
 
 		renderHeader() {
 			const header = new Header(this.appState).render();
-			this.app.append(header);
+			this.app.prepend(header);
 		}
 	}
 
