@@ -1159,13 +1159,11 @@
 				this.el.innerHTML = `<div class="card_list__loader">Loading....</div>`;
 				return this.el;
 			}
-			this.el.classList.add('card_list');
-			this.el.innerHTML = `
-			<h1>Founded books - ${this.parentState.numFound}</h1>
-
-		`;
+			const cardGrid = document.createElement('div');
+			cardGrid.classList.add('card_grid');
+			this.el.append(cardGrid);
 			for (const card of this.parentState.list) {
-				this.el.append(new Card(this.appState, card).render());
+				cardGrid.append(new Card(this.appState, card).render());
 			}
 			return this.el;
 		}
@@ -1186,6 +1184,11 @@
 			this.appState = onChange(this.appState, this.appStateHook.bind(this));
 			this.state = onChange(this.state, this.stateHook.bind(this));
 			this.setTitle('Search Book');
+		}
+
+		destroy() {
+			onChange.unsubscribe(this.appState);
+			onChange.unsubscribe(this.state);
 		}
 
 		async stateHook(path) {
@@ -1216,8 +1219,50 @@
 
 		render() {
 			const main = document.createElement('div');
+			main.innerHTML = `
+			<h1>Founded books - ${this.state.numFound}</h1>
+
+		`;
 			main.appendChild(new Search(this.state).render());
 			main.appendChild(new CardList(this.appState, this.state).render());
+			this.app.innerHTML = '';
+			this.app.append(main);
+			this.renderHeader();
+		}
+
+		renderHeader() {
+			const header = new Header(this.appState).render();
+			this.app.prepend(header);
+		}
+	}
+
+	class FavoritesView extends AbstractView {
+
+		constructor(appState) {
+			super();
+			this.appState = appState;
+			this.appState = onChange(this.appState, this.appStateHook.bind(this));
+			this.setTitle('My favorites Book');
+		}
+
+		destroy() {
+			onChange.unsubscribe(this.appState);
+		}
+
+		appStateHook(path) {
+
+			if (path === 'favorites') {
+				this.render();
+			}
+		}
+
+		render() { 
+			const main = document.createElement('div');
+			main.innerHTML = `
+			<h1>Favorites books</h1>
+
+		`;
+			main.appendChild(new CardList(this.appState, {list: this.appState.favorites}).render());
 			this.app.innerHTML = '';
 			this.app.append(main);
 			this.renderHeader();
@@ -1234,6 +1279,10 @@
 			{
 				path: "",
 				view: MainView
+			},
+			{
+				path: "#favorites",
+				view: FavoritesView
 			}
 		];
 		appState = {

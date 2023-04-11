@@ -21,6 +21,11 @@ export class MainView extends AbstractView {
 		this.setTitle('Search Book');
 	}
 
+	destroy() {
+		onChange.unsubscribe(this.appState);
+		onChange.unsubscribe(this.state);
+	}
+
 	async stateHook(path) {
 		if (path === 'searchQuery') {
 			this.state.loading = true;
@@ -49,6 +54,10 @@ export class MainView extends AbstractView {
 
 	render() {
 		const main = document.createElement('div');
+		main.innerHTML = `
+			<h1>Founded books - ${this.state.numFound}</h1>
+
+		`
 		main.appendChild(new Search(this.state).render());
 		main.appendChild(new CardList(this.appState, this.state).render());
 		this.app.innerHTML = ''
